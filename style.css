@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #002868;
+  background-color: hsl(217, 100%, 20%);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -31,7 +31,11 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #7f9695;
+  background-color: hsl(
+    var(--hue, 177),
+    var(--saturation, 10%),
+    calc(var(--lightness-offset, 0%) + var(--lightness, 54%))
+  );
   color: #ffffff;
   fill: #ffffff;
   text-transform: lowercase;
@@ -47,4 +51,25 @@ body {
 .key > svg {
   width: 1.75em;
   height: 1.75em;
+}
+
+.key:hover,
+.key:focus {
+  --lightness-offset: 10%;
+}
+
+.key.wrong {
+  --lightness: 26%;
+}
+
+.key.wrong-location {
+  --hue: 347;
+  --saturation: 90%;
+  --lightness: 39%;
+}
+
+.key.correct {
+  --hue: 50.6;
+  --saturation: 100%;
+  --lightness: 50%;
 }
