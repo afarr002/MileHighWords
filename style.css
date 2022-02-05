@@ -35,7 +35,16 @@ body {
   color: #ffffff;
   fill: #ffffff;
   text-transform: lowercase;
-  border: 0.25em;
+  border-radius: 0.25em;
   cursor: pointer;
   user-select: none;
+}
+
+.key.large {
+  grid-column: span 3;
+}
+
+.key > svg {
+  width: 1.75em;
+  height: 1.75em;
 }
