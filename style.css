@@ -36,8 +36,8 @@ body {
     var(--saturation, 10%),
     calc(var(--lightness-offset, 0%) + var(--lightness, 54%))
   );
-  color: #ffffff;
-  fill: #ffffff;
+  color: white;
+  fill: white;
   text-transform: lowercase;
   border-radius: 0.25em;
   cursor: pointer;
@@ -59,13 +59,15 @@ body {
 }
 
 .key.wrong {
-  --lightness: 26%;
-}
-
-.key.wrong-location {
   --hue: 347;
   --saturation: 90%;
   --lightness: 39%;
+}
+
+.key.wrong-location {
+  --hue: 177;
+  --saturation: 10%;
+  --lightness: 54%;
 }
 
 .key.correct {
@@ -86,4 +88,30 @@ body {
 }
 
 .tile {
+  font-size: 2em;
+  color: white;
+  border: 0.05em solid hsl(177, 10%, 54%);
+  text-transform: lowercase;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+}
+
+.tile[data-state="active"] {
+  border-color: hsl(194, 8%, 56%);
+}
+
+.tile[data-state="wrong"] {
+  border: none;
+  background-color: hsl(347, 90%, 39%);
+}
+.tile[data-state="wrong-location"] {
+  border: none;
+  background-color: hsl(177, 10%, 54%);
+}
+.tile[data-state="correct"] {
+  border: none;
+  background-color: hsl(50.6, 100%, 50%);
 }
