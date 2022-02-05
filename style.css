@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #7f9695;
+  background-color: #002868;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -26,4 +26,16 @@ body {
 .key {
   font-size: inherit;
   grid-column: span 2;
+  border: none;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #7f9695;
+  color: #ffffff;
+  fill: #ffffff;
+  text-transform: lowercase;
+  border: 0.25em;
+  cursor: pointer;
+  user-select: none;
 }
