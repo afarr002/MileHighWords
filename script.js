@@ -58,6 +58,17 @@ const pressKey = (key) => {
   nextTile.dataset.state = "active";
 };
 
+const deleteKey = () => {
+  const activeTiles = getActiveTiles();
+  const lastTile = activeTiles[activeTiles.length - 1];
+
+  if (lastTile === null) return;
+
+  lastTile.textContent = "";
+  delete lastTile.dataset.state;
+  delete lastTile.dataset.letter;
+};
+
 const getActiveTiles = () => {
   return guessGrid.querySelectorAll(`[data-state="active"]`);
 };
