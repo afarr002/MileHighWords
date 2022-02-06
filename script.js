@@ -1,9 +1,18 @@
 import denverWords from "./utils/denverWords";
 import dictionary from "./utils/dictionary";
 
+const guessGrid = document.querySelector("[data-guess-grid]");
+
+const wordLength = 5;
+
 const startInteraction = () => {
   document.addEventListener("click", handleMouseClick);
   document.addEventListener("click", handleKeyPress);
+};
+
+const stopInteraction = () => {
+  document.removeEventListener("click", handleMouseClick);
+  document.removeEventListener("click", handleKeyPress);
 };
 
 const handleMouseClick = (event) => {
@@ -38,4 +47,17 @@ const handleKeyPress = (event) => {
     pressKey(event.key);
     return;
   }
+};
+
+const pressKey = (key) => {
+  const activeTiles = getActiveTiles();
+  if (activeTiles.length >= wordLength) return;
+  const nextTile = guessGrid.querySelector(":not([data-letter])");
+  nextTile.dataset.letter = key.toUpperCase();
+  nextTile.textContent = key;
+  nextTile.dataset.state = "active";
+};
+
+const getActiveTiles = () => {
+  return guessGrid.querySelectorAll(`[data-state="active"]`);
 };
