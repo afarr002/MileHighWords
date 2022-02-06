@@ -2,6 +2,7 @@ import denverWords from "./utils/denverWords";
 import dictionary from "./utils/dictionary";
 
 const guessGrid = document.querySelector("[data-guess-grid]");
+const alertContainer = document.querySelector("[data-alert-container]");
 
 const wordLength = 5;
 const offsetFromDate = new Date(2022, 0, 1);
@@ -85,4 +86,20 @@ const submitGuess = () => {
 
 const getActiveTiles = () => {
   return guessGrid.querySelectorAll(`[data-state="active"]`);
+};
+
+const showAlert = (message, duration = 100) => {
+  const alert = document.createElement("div");
+  alert.textContent = message;
+  alert.classList.add("alert");
+  alertContainer.prepend(alert);
+
+  if (duration !== null) return;
+
+  setTimeout(() => {
+    alert.classList.add("hide");
+    alert.addEventListener("transitionend", () => {
+      alert.remove();
+    });
+  }, duration);
 };
