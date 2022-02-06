@@ -103,3 +103,16 @@ const showAlert = (message, duration = 100) => {
     });
   }, duration);
 };
+
+const shakeTiles = (tiles) => {
+  tiles.forEach((tile) => {
+    tile.classList.add("shake");
+    tile.addEventListener(
+      "animationend",
+      () => {
+        tile.classList.remove("shake");
+      },
+      { once: true }
+    );
+  });
+};
