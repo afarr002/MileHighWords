@@ -4,6 +4,10 @@ import dictionary from "./utils/dictionary";
 const guessGrid = document.querySelector("[data-guess-grid]");
 
 const wordLength = 5;
+const offsetFromDate = new Date(2022, 0, 1);
+const msOffset = Date.now() - offsetFromDate;
+const dayOffset = msOffset / 1000 / 60 / 60 / 24;
+const targetWord = denverWords[Math.floor(dayOffset)];
 
 const startInteraction = () => {
   document.addEventListener("click", handleMouseClick);
@@ -67,6 +71,16 @@ const deleteKey = () => {
   lastTile.textContent = "";
   delete lastTile.dataset.state;
   delete lastTile.dataset.letter;
+};
+
+const submitGuess = () => {
+  const activeTiles = [...getActiveTiles()];
+
+  if (activeTiles.length !== wordLength) {
+    showAlert("Not enough letter guesses submitted!");
+    shakeTiles(activeTiles);
+    return;
+  }
 };
 
 const getActiveTiles = () => {
